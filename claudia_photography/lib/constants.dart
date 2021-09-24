@@ -23,7 +23,7 @@ MaterialColor createMaterialColor(Color color) {
 
 ThemeData theme = ThemeData(
   fontFamily: 'Sofia',
-  primarySwatch: Colors.red,
+  primarySwatch: materialCeleste,
 );
 
 const TextStyle titleStyle = TextStyle(
@@ -41,6 +41,25 @@ const TextStyle subtitleStyle = TextStyle(
   letterSpacing: 8.0,
 );
 
+PreferredSize bottomAppBar = PreferredSize(
+  child: Padding(
+    padding: const EdgeInsets.fromLTRB(80.0, 20.0, 80.0, 16.0),
+    child: RichText(
+      textAlign: TextAlign.center,
+      text: const TextSpan(
+          text: 'Claudia Oropeza',
+          style: titleStyle,
+          children: <TextSpan>[
+            TextSpan(
+              text: '\nPHOTOGRAPHY',
+              style: subtitleStyle,
+            ),
+          ]),
+    ),
+  ),
+  preferredSize: const Size(0.0, 50.0),
+);
+
 MaterialColor materialCeleste = createMaterialColor(celeste);
 MaterialColor materialVerdeAzul = createMaterialColor(verdeAzul);
 MaterialColor materialGris = createMaterialColor(gris);
@@ -55,3 +74,4 @@ const Color rosa = Color(0xFFCDB6BB);
 const double calendarMaxWidth = 300;
 const double genericMargin = 40.0;
 const double appBarHeight = 150.0;
+const double textFieldWidth = 400.0;
