@@ -27,20 +27,26 @@ class _MyHomePageState extends State<MyHomePage> {
           child: LayoutBuilder(builder: (context, constraints) {
             if (constraints.maxWidth < 768) {
               return Center(
-                child: Column(
-                  children: [
-                    CalendarWidget(),
-                    ClientForm(),
-                  ],
+                child: Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CalendarWidget(),
+                      ClientForm(),
+                    ],
+                  ),
                 ),
               );
             } else {
               return Center(
-                child: Row(
-                  children: [
-                    CalendarWidget(),
-                    ClientForm(),
-                  ],
+                child: Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CalendarWidget(),
+                      ClientForm(),
+                    ],
+                  ),
                 ),
               );
             }
