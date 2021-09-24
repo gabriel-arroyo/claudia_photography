@@ -77,13 +77,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Amsterdam Four_ttf
+    - family: Amsterdam
       fonts:
         - asset: fonts/amsterdam-four-ttf.ttf
     - family: Baskerville
       fonts:
         - asset: fonts/Baskerville.ttc
-    - family: Sofia Pro Light
+    - family: Sofia
       fonts:
         - asset: fonts/sofiapro-light.otf
   #
