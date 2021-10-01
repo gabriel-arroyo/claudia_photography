@@ -1,5 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
+
+const Color primaryColor = Color(0xFFBD1522);
+const Color secondaryColor = Color(0xFFC5313D);
+const Color secondaryAplphaColor = Color(0x88C5313D);
+const Color tertiaryColor = Color(0xFFFF7300);
+const Color backgroundColor = Color(0xFFFFFFFF);
+const Color textTitleColor = Color(0xFFFFFFFF);
+const Color textColor = verdeAzul;
+
+MaterialColor primaryMaterialColor = createMaterialColor(primaryColor);
+MaterialColor secondaryMaterialColor = createMaterialColor(secondaryColor);
+MaterialColor tertiaryMaterialColor = createMaterialColor(tertiaryColor);
+MaterialColor textTitleMaterialColor = createMaterialColor(textTitleColor);
+MaterialColor textMaterialColor = createMaterialColor(textColor);
+
+MaterialColor materialCeleste = createMaterialColor(celeste);
+MaterialColor materialVerdeAzul = createMaterialColor(verdeAzul);
+MaterialColor materialGris = createMaterialColor(gris);
+MaterialColor materialCafe = createMaterialColor(cafe);
+MaterialColor materialRosa = createMaterialColor(rosa);
+const Color celeste = Color(0xFF9EBCBE);
+const Color verdeAzul = Color(0xFF002028);
+const Color gris = Color(0xFF3A484B);
+const Color cafe = Color(0xFF643F2D);
+const Color rosa = Color(0xFFCDB6BB);
+
+const double calendarMaxWidth = 300;
+const double genericMargin = 40.0;
+const double appBarHeight = 120.0;
+const double textFieldWidth = 400.0;
 
 MaterialColor createMaterialColor(Color color) {
   List strengths = <double>[.05];
@@ -23,55 +54,42 @@ MaterialColor createMaterialColor(Color color) {
 
 ThemeData theme = ThemeData(
   fontFamily: 'Sofia',
-  primarySwatch: materialCeleste,
+  primarySwatch: primaryMaterialColor,
+  scaffoldBackgroundColor: backgroundColor,
 );
 
 const TextStyle titleStyle = TextStyle(
   fontFamily: 'Amsterdam',
-  fontSize: 38.0,
-  height: 1.4,
-  color: verdeAzul,
+  color: textTitleColor,
 );
 
 const TextStyle subtitleStyle = TextStyle(
   fontFamily: 'Baskerville',
   fontSize: 16.0,
-  color: verdeAzul,
+  color: Colors.white,
   fontWeight: FontWeight.bold,
   letterSpacing: 8.0,
 );
 
-PreferredSize bottomAppBar = PreferredSize(
-  child: Padding(
-    padding: const EdgeInsets.fromLTRB(80.0, 20.0, 80.0, 16.0),
-    child: RichText(
-      textAlign: TextAlign.center,
-      text: const TextSpan(
-          text: 'Claudia Oropeza',
-          style: titleStyle,
-          children: <TextSpan>[
-            TextSpan(
-              text: '\nPHOTOGRAPHY',
-              style: subtitleStyle,
-            ),
-          ]),
-    ),
+// calendar
+CalendarStyle kCalendarStyle = const CalendarStyle(
+  // Use `CalendarStyle` to customize the UI
+  outsideDaysVisible: false,
+  markerDecoration: BoxDecoration(
+    color: tertiaryColor,
+    shape: BoxShape.circle,
   ),
-  preferredSize: const Size(0.0, 50.0),
+//  todayDecoration: BoxDecoration(
+//    color: secondaryAplphaColor,
+//    shape: BoxShape.rectangle,
+//  ),
+//  selectedDecoration: BoxDecoration(
+//    color: primaryColor,
+//    shape: BoxShape.circle,
+//  ),
 );
 
-MaterialColor materialCeleste = createMaterialColor(celeste);
-MaterialColor materialVerdeAzul = createMaterialColor(verdeAzul);
-MaterialColor materialGris = createMaterialColor(gris);
-MaterialColor materialCafe = createMaterialColor(cafe);
-MaterialColor materialRosa = createMaterialColor(rosa);
-const Color celeste = Color(0xFF9EBCBE);
-const Color verdeAzul = Color(0xFF002028);
-const Color gris = Color(0xFF3A484B);
-const Color cafe = Color(0xFF643F2D);
-const Color rosa = Color(0xFFCDB6BB);
-
-const double calendarMaxWidth = 300;
-const double genericMargin = 40.0;
-const double appBarHeight = 150.0;
-const double textFieldWidth = 400.0;
+HeaderStyle kCalendarHeaderStyle = const HeaderStyle(
+  titleCentered: true,
+  formatButtonVisible: false,
+);

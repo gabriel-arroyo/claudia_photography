@@ -13,6 +13,7 @@ class ClaudiaPhotography extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Claudia Oropeza Photography',
       theme: theme,
       home: const MyHomePage(title: 'Claudia Oropeza Photography'),
@@ -28,4 +29,3 @@ class ClaudiaPhotography extends StatelessWidget {
     );
   }
 }
-
