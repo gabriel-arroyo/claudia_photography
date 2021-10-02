@@ -1,13 +1,11 @@
-import 'package:claudia_photography/call_to_action.dart';
-import 'package:claudia_photography/constants.dart';
-import 'package:claudia_photography/example_calendar.dart';
+import '../widgets/call_to_action.dart';
 import 'package:flutter/material.dart';
-import 'client_form.dart';
-import 'calendar.dart';
+import '../widgets/client_form.dart';
+import '../widgets/calendar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'portfolio_carrousel.dart';
+import '../widgets/portfolio_carrousel.dart';
+import '../models/textos.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'textos.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

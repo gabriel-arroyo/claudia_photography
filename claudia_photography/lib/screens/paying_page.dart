@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'pay_module.dart';
+import '../widgets/pay_module.dart';
 
 class PayingPage extends StatelessWidget {
-  const PayingPage({ Key? key }) : super(key: key);
+  const PayingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Container(
+      body: SafeArea(
+        child: Container(
           constraints: const BoxConstraints.expand(),
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -21,7 +22,7 @@ class PayingPage extends StatelessWidget {
               PayWidget(),
             ],
           ),
-      ),
+        ),
       ),
     );
   }

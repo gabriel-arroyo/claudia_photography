@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'calendar_utils.dart';
-import 'constants.dart';
+import '../models/calendar_utils.dart';
+import '../models/constants.dart';
 
 class TimeSelector extends StatefulWidget {
   final ValueNotifier<List<Event>> selectedEvents;
@@ -18,6 +18,8 @@ class _TimeSelectorState extends State<TimeSelector> {
       valueListenable: widget.selectedEvents,
       builder: (context, value, _) {
         return ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
           itemCount: value.length,
           itemBuilder: (context, index) {
             return Container(

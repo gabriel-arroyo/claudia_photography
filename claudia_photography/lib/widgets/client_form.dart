@@ -1,9 +1,5 @@
-import 'dart:async';
-
-import 'package:claudia_photography/constants.dart';
 import 'package:flutter/material.dart';
-import 'dropdown_formfield.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import '../screens/paying_page.dart';
 
 class ClientForm extends StatefulWidget {
   const ClientForm({Key? key}) : super(key: key);
@@ -14,7 +10,7 @@ class ClientForm extends StatefulWidget {
 
 class _ClientFormState extends State<ClientForm> {
   final _formKey = GlobalKey<FormState>();
-  Client _newClient = Client();
+  final Client _newClient = Client();
   String persons = '1';
   bool rememberInfo = false;
   final _phoneController = TextEditingController();
@@ -115,6 +111,12 @@ class _ClientFormState extends State<ClientForm> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     setState(() {});
+                    Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PayingPage(),
+                ),
+              );
                     _formKey.currentState!.save();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: const Text('Agendando...'),

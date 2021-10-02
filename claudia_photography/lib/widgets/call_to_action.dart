@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../models/constants.dart';
 
 class CallToAction extends StatelessWidget {
   const CallToAction({Key? key}) : super(key: key);
@@ -12,9 +12,9 @@ class CallToAction extends StatelessWidget {
         FittedBox(
           fit: BoxFit.fitHeight,
           child: Text(
-            '¡Agenda tu sesión ahora!',
+            'Agenda tu sesión',
             style: TextStyle(
-              fontSize: 40,
+              fontSize: 60,
               fontFamily: 'Christmas',
               color: primaryColor,
               fontWeight: FontWeight.bold,
