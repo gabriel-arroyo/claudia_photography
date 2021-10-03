@@ -1,11 +1,16 @@
+import 'package:claudia_photography/widgets/paquete.dart';
+import 'package:claudia_photography/widgets/presentacion.dart';
+import 'package:claudia_photography/widgets/time_selector.dart';
+
 import '../widgets/call_to_action.dart';
 import 'package:flutter/material.dart';
 import '../widgets/client_form.dart';
 import '../widgets/calendar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../widgets/portfolio_carrousel.dart';
+import '../widgets/profile_photo.dart';
 import '../models/textos.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import '../widgets/paquete.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -64,17 +69,21 @@ class MyLayout extends StatelessWidget {
         mainAxisSpacing: 1,
         crossAxisSpacing: 1,
         staggeredTiles: <StaggeredTile>[
-          StaggeredTile.count(leftcols, topRows),
-          StaggeredTile.count(rightcols, topRows),
+          const StaggeredTile.count(10, 2),
+          StaggeredTile.count(5, topRows),
+          StaggeredTile.count(5, topRows),
           StaggeredTile.count(maxcols, 2),
-          StaggeredTile.count(leftcols, bottomRows),
-          StaggeredTile.count(rightcols, bottomRows),
+          StaggeredTile.count(3, bottomRows),
+          StaggeredTile.count(3, bottomRows),
+          StaggeredTile.count(4, bottomRows),
         ],
         children: const <Widget>[
-          PortfolioCarrousel(),
-          ExplanationText(),
+          PresentacionCard(),
+          ProfilePhoto(),
+          PaqueteTexto(),
           CallToAction(),
           CalendarWidget(),
+          TimeSelector(),
           ClientForm(),
         ],
       );
@@ -133,7 +142,7 @@ class ExplanationText extends StatelessWidget {
         style: const TextStyle(fontSize: 20.0),
         maxLines: 80,
         minFontSize: 10.0,
-        overflow: TextOverflow.visible,
+        overflow: TextOverflow.clip,
       ),
     );
   }

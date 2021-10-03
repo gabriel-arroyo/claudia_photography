@@ -3,6 +3,7 @@ import '../models/constants.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../models/calendar_utils.dart';
 import 'time_selector.dart';
+import '../models/events.dart';
 import 'custom_date.dart';
 
 class CalendarWidget extends StatefulWidget {
@@ -16,25 +17,25 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-  late final ValueNotifier<List<Event>> _selectedEvents;
+  //late final ValueNotifier<List<Event>> _selectedEvents;
 
   @override
   void initState() {
     super.initState();
 
     _selectedDay = _focusedDay;
-    _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
+    selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
   }
 
   @override
   void dispose() {
-    _selectedEvents.dispose();
+    selectedEvents.dispose();
     super.dispose();
   }
 
   List<Event> _getEventsForDay(DateTime day) {
     // Implementation example
-    return  kEvents[day] ?? [];
+    return kEvents[day] ?? [];
   }
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
@@ -43,7 +44,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       _selectedDay = selectedDay;
       _focusedDay = focusedDay;
     });
-    _selectedEvents.value = _getEventsForDay(selectedDay);
+    selectedEvents.value = _getEventsForDay(selectedDay);
     //}
   }
 
@@ -63,27 +64,21 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
       children: [
         Expanded(
-          flex: 3,
+          flex: 1,
           child: Container(
-            constraints: const BoxConstraints(
-              maxHeight: 500.0,
-              maxWidth: 300,
-            ),
             padding: const EdgeInsets.only(left: 50.0, right: 15.0),
             child: TableCalendar(
-              shouldFillViewport: true,
+              shouldFillViewport: false,
               firstDay: kFirstDay,
               lastDay: kLastDay,
               focusedDay: _focusedDay,
               locale: 'es_MX',
-              selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
               calendarFormat: _calendarFormat,
               availableCalendarFormats: kCalendarFormats,
+              selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
               enabledDayPredicate: _getEnabledDay,
               eventLoader: _getEventsForDay,
               startingDayOfWeek: StartingDayOfWeek.monday,
@@ -91,12 +86,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               headerStyle: kCalendarHeaderStyle,
               onDaySelected: _onDaySelected,
               calendarBuilders: CalendarBuilders(
-                selectedBuilder: (contex, date, events) =>
-                    SelectedDate(context, date, events),
-                markerBuilder: (context, date, events) =>
-                    events.isEmpty ? null : MarkerDate(context, date, events),
-                todayBuilder: (context, date, events) =>
-                    TodayDate(context, date, events),
+                markerBuilder: (_, date, events) =>
+                    events.isEmpty ? null : MarkerDate(date),
+                todayBuilder: (_, date, __) => TodayDate(date),
+                selectedBuilder: (_, date, __) => SelectedDate(date),
+                disabledBuilder: (_, date, __) => DisabledDate(date),
               ),
               onFormatChanged: (format) => _onFormatChanged(format),
               onPageChanged: (focusedDay) {
@@ -105,11 +99,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             ),
           ),
         ),
-        Expanded(
-            flex: 1,
-            child: TimeSelector(
-              selectedEvents: _selectedEvents,
-            )),
+        //Expanded(
+        //   flex: 2,
+        //  child: TimeSelector(
+        //   selectedEvents: _selectedEvents,
+        // )),
       ],
     );
   }

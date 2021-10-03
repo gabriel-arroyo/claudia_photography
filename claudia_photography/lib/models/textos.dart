@@ -1,7 +1,6 @@
-String detalles = '''Bienvenidos a THE CHRISTMAS CANDY 
-
-Llegó la temporada más esperada en Claudiaphotography, soñamos cada año con la construcción de nuestro set navideño, este año nace “The Christmas candy” una escenografía increíble, llena de luz y colores vibrantes como el rojo como nuestro color principal y el plata y el blanco como nuestro color secundario en los detalles. Cada elemento será realista y cada detalle cuenta... pinos, luces, caramelos gigantes, etc.. Una experiencia que te hará vivir un momento inolvidable.
-
+String tituloPresentacion = ' Bienvenidos a THE CHRISTMAS CANDY ';
+String presentacion = ' Llegó la temporada más esperada en Claudiaphotography, soñamos cada año con la construcción de nuestro set navideño, este año nace “The Christmas candy” una escenografía increíble, llena de luz y colores vibrantes como el rojo como nuestro color principal y el plata y el blanco como nuestro color secundario en los detalles. Cada elemento será realista y cada detalle cuenta... pinos, luces, caramelos gigantes, etc.. Una experiencia que te hará vivir un momento inolvidable.';
+String detalles = ''' 
 El paquete incluye:
 
 25 minutos de sesión

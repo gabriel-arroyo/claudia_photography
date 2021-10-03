@@ -8,6 +8,7 @@ const Color secondaryAplphaColor = Color(0x88C5313D);
 const Color tertiaryColor = Color(0xFFFF7300);
 const Color backgroundColor = Color(0xFFFFFFFF);
 const Color textTitleColor = Color(0xFFFFFFFF);
+const Color calendarDateColor = Color(0xFF017736);
 const Color textColor = verdeAzul;
 
 MaterialColor primaryMaterialColor = createMaterialColor(primaryColor);
@@ -71,22 +72,82 @@ const TextStyle subtitleStyle = TextStyle(
   letterSpacing: 8.0,
 );
 
+const double kCalendarFontSize = 18.0;
 // calendar
-CalendarStyle kCalendarStyle = const CalendarStyle(
+CalendarStyle kCalendarStyle = CalendarStyle(
   // Use `CalendarStyle` to customize the UI
-  outsideDaysVisible: false,
-  markerDecoration: BoxDecoration(
-    color: tertiaryColor,
+  isTodayHighlighted: true,
+  canMarkersOverflow: true,
+  outsideDaysVisible: true,
+  markersAutoAligned: true,
+  markerSize: 5.0,
+  markerSizeScale: 0.2,
+  markersAnchor: 0.7,
+  rangeHighlightScale: 1.0,
+  markerMargin: const EdgeInsets.symmetric(horizontal: 0.0),
+  markersAlignment: Alignment.bottomCenter,
+  markersMaxCount: 1,
+  cellMargin: const EdgeInsets.all(4.0),
+  markersOffset: const PositionedOffset(),
+  rangeHighlightColor: const Color(0xFFBBDDFF),
+  markerDecoration: const BoxDecoration(
+    color: calendarDateColor,
     shape: BoxShape.circle,
   ),
-//  todayDecoration: BoxDecoration(
-//    color: secondaryAplphaColor,
-//    shape: BoxShape.rectangle,
-//  ),
-//  selectedDecoration: BoxDecoration(
-//    color: primaryColor,
-//    shape: BoxShape.circle,
-//  ),
+  todayTextStyle: const TextStyle(
+    color: Colors.black,
+    fontSize: kCalendarFontSize,
+  ), //
+  todayDecoration: BoxDecoration(
+    color: Colors.transparent,
+    shape: BoxShape.circle,
+    border: Border.all(
+      color: const Color(0xFF5C6BC0),
+      width: 3.0,
+    ),
+  ),
+  selectedTextStyle: const TextStyle(
+    color: Color(0xFFFAFAFA),
+    fontSize: kCalendarFontSize,
+  ),
+  selectedDecoration: const BoxDecoration(
+    color: calendarDateColor,
+    shape: BoxShape.circle,
+  ),
+  rangeStartTextStyle: const TextStyle(
+    color: Color(0xFFFAFAFA),
+    fontSize: kCalendarFontSize,
+  ),
+  rangeStartDecoration: const BoxDecoration(
+    color: Color(0xFF6699FF),
+    shape: BoxShape.circle,
+  ),
+  rangeEndTextStyle: const TextStyle(
+    color: Color(0xFFFAFAFA),
+    fontSize: kCalendarFontSize,
+  ),
+  rangeEndDecoration: const BoxDecoration(
+    color: Color(0xFF6699FF),
+    shape: BoxShape.circle,
+  ),
+  withinRangeTextStyle: const TextStyle(),
+  withinRangeDecoration: const BoxDecoration(shape: BoxShape.circle),
+  outsideTextStyle: const TextStyle(color: Color(0xFFCECECE)),
+  outsideDecoration: const BoxDecoration(shape: BoxShape.circle),
+  disabledTextStyle: const TextStyle(color: Color(0xFF7C7C7C)),
+  disabledDecoration: const BoxDecoration(shape: BoxShape.circle),
+  holidayTextStyle: const TextStyle(color: Color(0xFF5C6BC0)),
+  holidayDecoration: const BoxDecoration(
+    border: Border.fromBorderSide(
+      BorderSide(color: Color(0xFF9FA8DA), width: 1.4),
+    ),
+    shape: BoxShape.circle,
+  ),
+  weekendTextStyle: const TextStyle(color: Color(0xFF5A5A5A)),
+  weekendDecoration: const BoxDecoration(shape: BoxShape.circle),
+  defaultTextStyle: const TextStyle(),
+  defaultDecoration: const BoxDecoration(shape: BoxShape.circle),
+  rowDecoration: const BoxDecoration(),
 );
 
 HeaderStyle kCalendarHeaderStyle = const HeaderStyle(

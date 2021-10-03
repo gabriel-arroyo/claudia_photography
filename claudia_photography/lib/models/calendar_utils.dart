@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:math';
 import 'package:table_calendar/table_calendar.dart';
 
 class Event {
@@ -10,6 +11,8 @@ class Event {
   @override
   String toString() => title;
 }
+
+int horasMatutinas = 8;
 
 final List<String> horarios = [
   '9:00',
@@ -44,10 +47,10 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
 
 final _kEventSource = {
   for (var item in List.generate(7, (index) => index))
-    DateTime.utc(kFirstDay.year, kFirstDay.month, item):
-        List.generate(12, (index) => Event(title:horarios[index], timeIndex: index))
+    DateTime.utc(kFirstDay.year, kFirstDay.month, item): List.generate(
+        horarios.length - Random().nextInt(10),
+        (index) => Event(title: horarios[index], timeIndex: index))
 };
-
 
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;

@@ -1,28 +1,26 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../models/constants.dart';
 
 class SelectedDate extends StatelessWidget {
-  final BuildContext context;
   final DateTime date;
-  final DateTime event;
 
-  const SelectedDate(this.context, this.date, this.event, {Key? key})
-      : super(key: key);
+  const SelectedDate(this.date, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(4.0),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.green,
+      decoration: const BoxDecoration(
+        color: Color(0xFF000000),
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Color(0xB2105337),
             spreadRadius: 2,
             blurRadius: 3,
-            offset: const Offset(0, 5), // changes position of shadow
+            offset: Offset(0, 5), // changes position of shadow
           ),
         ],
       ),
@@ -30,6 +28,8 @@ class SelectedDate extends StatelessWidget {
         date.day.toString(),
         style: const TextStyle(
           color: Colors.white,
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -37,25 +37,46 @@ class SelectedDate extends StatelessWidget {
 }
 
 class MarkerDate extends StatelessWidget {
-  final BuildContext context;
   final DateTime date;
-  final List<Object?> events;
-  const MarkerDate(this.context, this.date, this.events, {Key? key})
-      : super(key: key);
+  const MarkerDate(this.date, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(4.0),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.green.withAlpha(160),
+      decoration: const BoxDecoration(
+        color: Color(0xB933A828),
         shape: BoxShape.circle,
       ),
       child: Text(
         date.day.toString(),
         style: const TextStyle(
           color: Colors.white,
+          fontSize: 20.0,
+        ),
+      ),
+    );
+  }
+}
+
+class DisabledDate extends StatelessWidget {
+  final DateTime date;
+  const DisabledDate(this.date, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        shape: BoxShape.rectangle,
+      ),
+      child: Text(
+        date.day.toString(),
+        style: const TextStyle(
+          color: Color(0x80000000),
+          fontSize: 20.0,
         ),
       ),
     );
@@ -63,18 +84,15 @@ class MarkerDate extends StatelessWidget {
 }
 
 class TodayDate extends StatelessWidget {
-  final BuildContext context;
   final DateTime date;
-  final DateTime events;
-  const TodayDate(this.context, this.date, this.events, {Key? key})
-      : super(key: key);
+  const TodayDate(this.date, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        border: Border.all(color: primaryColor, width: 2.0),
+        border: Border.all(color: primaryColor, width: 3.0),
         borderRadius: BorderRadius.circular(10.0),
         shape: BoxShape.rectangle,
       ),
@@ -82,6 +100,7 @@ class TodayDate extends StatelessWidget {
         date.day.toString(),
         style: const TextStyle(
           color: Colors.black,
+          fontSize: 20.0,
         ),
       ),
     );
