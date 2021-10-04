@@ -6,7 +6,7 @@ class PaqueteTexto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Image(
-      fit: BoxFit.fitWidth,
+      fit: BoxFit.fitHeight,
       image: AssetImage('images/paquete.png'),
     );
   }

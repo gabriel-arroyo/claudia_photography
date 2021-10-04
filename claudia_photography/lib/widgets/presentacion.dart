@@ -20,8 +20,8 @@ class PresentacionCard extends StatelessWidget {
             contentPadding: const EdgeInsets.all(20),
             title: AutoSizeText(
               tituloPresentacion,
-              style: const TextStyle(
-                fontSize: 18.0,
+              style: TextStyle(
+                fontSize: sx(12),
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
@@ -29,7 +29,7 @@ class PresentacionCard extends StatelessWidget {
             subtitle: Text(
               presentacion,
               style: TextStyle(
-                fontSize: sx(8),
+                fontSize: sx(9),
               ),
             ),
           ),

@@ -47,6 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+class Size {
+  int x;
+  double y;
+  Size(this.x, this.y);
+}
+
 class MyLayout extends StatelessWidget {
   const MyLayout({
     Key? key,
@@ -55,13 +61,87 @@ class MyLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      int maxwidth = 800;
       int maxcols = 10;
-      double topRows = constraints.maxWidth > maxwidth ? 8.0 : 12.0;
-      double bottomRows = constraints.maxWidth > maxwidth ? 10.0 : 12.0;
-      int leftcols = constraints.maxWidth > maxwidth ? 5 : maxcols;
-      int rightcols =
-          constraints.maxWidth > maxwidth ? maxcols - leftcols : maxcols;
+      int maxwidth = 800;
+      int middlewidth = 500;
+      List<Size> sizes = <Size>[
+        Size(10, 10),
+        Size(10, 10),
+        Size(10, 10),
+        Size(10, 10),
+        Size(10, 10),
+        Size(10, 10),
+        Size(10, 10),
+      ];
+
+      if (constraints.maxWidth > maxwidth) {
+        //Presentación
+        sizes[0].x = 10;
+        sizes[0].y = 2.2;
+        //Foto
+        sizes[1].x = 5;
+        sizes[1].y = 4;
+        //Paquete
+        sizes[2].x = 5;
+        sizes[2].y = 5;
+        //Agenda tu sesion
+        sizes[3].x = 10;
+        sizes[3].y = 1;
+        //Calendario
+        sizes[4].x = 3;
+        sizes[4].y = 6;
+        //Horas
+        sizes[5].x = 3;
+        sizes[5].y = 6;
+        //Formulario
+        sizes[6].x = 4;
+        sizes[6].y = 6;
+      } else if (constraints.maxWidth > middlewidth) {
+        //Presentación
+        sizes[0].x = 10;
+        sizes[0].y = 3;
+        //Foto
+        sizes[1].x = 5;
+        sizes[1].y = 5;
+        //Paquete
+        sizes[2].x = 5;
+        sizes[2].y = 6;
+        //Agenda tu sesion
+        sizes[3].x = 10;
+        sizes[3].y = 1;
+        //Calendario
+        sizes[4].x = 7;
+        sizes[4].y = 7.1;
+        //Horas
+        sizes[5].x = 3;
+        sizes[5].y = 7;
+        //Formulario
+        sizes[6].x = 10;
+        sizes[6].y = 13;
+      } else {
+        //Presentación
+        sizes[0].x = 10;
+        sizes[0].y = 4;
+        //Foto
+        sizes[1].x = 5;
+        sizes[1].y = 6;
+        //Paquete
+        sizes[2].x = 5;
+        sizes[2].y = 7;
+        //Agenda tu sesion
+        sizes[3].x = 10;
+        sizes[3].y = 1;
+        //Calendario
+        sizes[4].x = 10;
+        sizes[4].y = 12;
+        //Horas
+        sizes[5].x = 5;
+        sizes[5].y = 5;
+        //Formulario
+        sizes[6].x = 10;
+        sizes[6].y = 15;
+      }
+
       return StaggeredGridView.count(
         primary: false,
         crossAxisCount: maxcols,
@@ -69,13 +149,13 @@ class MyLayout extends StatelessWidget {
         mainAxisSpacing: 1,
         crossAxisSpacing: 1,
         staggeredTiles: <StaggeredTile>[
-          const StaggeredTile.count(10, 2),
-          StaggeredTile.count(5, topRows),
-          StaggeredTile.count(5, topRows),
-          StaggeredTile.count(maxcols, 2),
-          StaggeredTile.count(3, bottomRows),
-          StaggeredTile.count(3, bottomRows),
-          StaggeredTile.count(4, bottomRows),
+          StaggeredTile.count(sizes[0].x, sizes[0].y),
+          StaggeredTile.count(sizes[1].x, sizes[1].y),
+          StaggeredTile.count(sizes[2].x, sizes[2].y),
+          StaggeredTile.count(sizes[3].x, sizes[3].y),
+          StaggeredTile.count(sizes[4].x, sizes[4].y),
+          StaggeredTile.count(sizes[5].x, sizes[5].y),
+          StaggeredTile.count(sizes[6].x, sizes[6].y),
         ],
         children: const <Widget>[
           PresentacionCard(),

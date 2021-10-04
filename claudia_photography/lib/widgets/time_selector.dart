@@ -23,7 +23,7 @@ class _TimeSelectorState extends State<TimeSelector> {
           shrinkWrap: false,
           itemCount: value.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
+            crossAxisCount: 3,
             childAspectRatio: 2,
           ),
           itemBuilder: (contex, index) {
