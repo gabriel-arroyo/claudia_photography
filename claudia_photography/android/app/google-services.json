@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "711664506129",
+    "project_id": "claudia-photography",
+    "storage_bucket": "claudia-photography.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711664506129:android:f0953dbf22d2684e4328b0",
+        "android_client_info": {
+          "package_name": "com.claudiaoropezaphotography.calendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711664506129-21rq3dmst07hanqv80obe55rummqq4al.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.claudiaoropezaphotography.calendar",
+            "certificate_hash": "e09c41bc4968b4e587ef4089fc7fc2b21221c795"
+          }
+        },
+        {
+          "client_id": "711664506129-p4c2mifh7416dsb466tbtorvkp91v1v4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJOxtWqkFvq3XoUFltBgdg5DZLtsvxWMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711664506129-p4c2mifh7416dsb466tbtorvkp91v1v4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

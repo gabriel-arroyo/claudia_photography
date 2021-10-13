@@ -1,9 +1,25 @@
-import 'package:claudia_photography/widgets/calendar.dart';
+// import 'package:claudia_photography/widgets/calendar.dart';
+import 'package:claudia_photography/models/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+// import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../models/calendar_utils.dart';
-import '../models/constants.dart';
 import '../models/events.dart';
+
+var buttonsStatus = List<bool>.generate(22, (int index) => false);
+
+reboootTimeButtons() {
+  buttonsStatus = List<bool>.generate(22, (int index) => false);
+  selectedTime = '';
+}
+
+void setButtons(int item) {
+  if (buttonsStatus[item]) {
+    return;
+  }
+  buttonsStatus =
+      List<bool>.generate(22, (int index) => index == item ? true : false);
+}
 
 class TimeSelector extends StatefulWidget {
   const TimeSelector({Key? key}) : super(key: key);
@@ -13,6 +29,12 @@ class TimeSelector extends StatefulWidget {
 }
 
 class _TimeSelectorState extends State<TimeSelector> {
+  @override
+  void initState() {
+    super.initState();
+    selectedEvents = ValueNotifier(List.empty());
+  }
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<List<Event>>(
@@ -27,26 +49,15 @@ class _TimeSelectorState extends State<TimeSelector> {
             childAspectRatio: 2,
           ),
           itemBuilder: (contex, index) {
-            return Container(
-              margin:
-                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
-              padding:
-                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
-              decoration: const BoxDecoration(
-                color: primaryColor,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20.0),
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  '${value[index]}',
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0),
-                ),
-              ),
+            return TimeButton(
+              hora: '${value[index]}',
+              onPress: () {
+                setState(() {
+                  setButtons(index);
+                  selectedTime = '${value[index]}';
+                });
+              },
+              color: buttonsStatus[index] ? primaryColor : secondaryAplphaColor,
             );
           },
         );
@@ -55,70 +66,64 @@ class _TimeSelectorState extends State<TimeSelector> {
   }
 }
 
-class TimeButtonsColumn extends StatelessWidget {
-  final List<Event> events;
-  final int min;
-  final int max;
-  const TimeButtonsColumn(
-    this.events,
-    this.min,
-    this.max, {
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        itemCount: events.length,
-        itemBuilder: (context, index) {
-          bool turnoMatutino = false;
-          if (index >= min && index < max) {
-            turnoMatutino = true;
-          }
-          return turnoMatutino
-              ? TimeButton(events[index])
-              : const SizedBox(height: 0.0);
-        },
-      ),
-    );
-  }
-}
-
 class TimeButton extends StatelessWidget {
-  final Event event;
-  const TimeButton(
-    this.event, {
+  final String hora;
+  final Function onPress;
+  final Color color;
+  bool selected = false;
+
+  TimeButton({
     Key? key,
+    required this.hora,
+    required this.onPress,
+    required this.color,
+    this.selected = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: 50.0, maxWidth: 75.0),
+    return GestureDetector(
+      onTap: () => onPress(),
       child: Container(
-        padding: const EdgeInsets.all(0.0),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 2.0,
-          vertical: 1.0,
-        ),
+        margin: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
+        padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
         decoration: BoxDecoration(
-          color: primaryColor,
-          borderRadius: BorderRadius.circular(25),
+          color: color,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20.0),
+          ),
         ),
-        child: ListTile(
-          title: Text(
-            '$event',
-            textAlign: TextAlign.center,
+        child: Center(
+          child: Text(
+            hora,
             style: const TextStyle(
-              fontSize: 15.0,
-              color: Colors.white,
-            ),
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0),
           ),
         ),
       ),
     );
   }
 }
+
+var text = RichText(
+  text: const TextSpan(
+    // Note: Styles for TextSpans must be explicitly defined.
+    // Child text spans will inherit styles from parent
+    style: TextStyle(
+      fontSize: 22.0,
+      color: Colors.black,
+    ),
+    children: <TextSpan>[
+      TextSpan(
+        text: '1. ',
+        style: TextStyle(
+            fontSize: 35.0, fontWeight: FontWeight.bold, color: primaryColor),
+      ),
+      TextSpan(
+        text: 'Selecciona una fecha',
+      ),
+    ],
+  ),
+);

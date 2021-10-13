@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.claudia_photography">
+    package="com.claudiaoropezaphotography.calendar">
    <application
         android:label="claudia_photography"
         android:icon="@mipmap/ic_launcher">

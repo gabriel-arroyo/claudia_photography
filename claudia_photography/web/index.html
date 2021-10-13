@@ -30,6 +30,29 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+<script src="https://api.daytonsquareroots.org/firebasedatabaseweb/v0.0.2/app.js" defer></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA4s0z03xBsWSEmRiyns-__LRR5Ak2Dl7Y",
+    authDomain: "claudia-oropeza-photography.firebaseapp.com",
+    databaseURL: "https://claudia-oropeza-photography-default-rtdb.firebaseio.com",
+    projectId: "claudia-oropeza-photography",
+    storageBucket: "claudia-oropeza-photography.appspot.com",
+    messagingSenderId: "351849809393",
+    appId: "1:351849809393:web:5d69e34d6438081e763050",
+    measurementId: "G-NZQZVTHTQL"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -97,5 +120,8 @@
       loadMainDartJs();
     }
   </script>
+  
+ 
+
 </body>
 </html>

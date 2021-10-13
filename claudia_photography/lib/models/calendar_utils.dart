@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'dart:math';
+import 'package:claudia_photography/FirebaseCustom.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../widgets/database_config.dart';
 
 class Event {
   final String title;
@@ -13,6 +15,9 @@ class Event {
 }
 
 int horasMatutinas = 8;
+
+final List<Event> eventsHorarios = List.generate(horarios.length,
+    (index) => Event(title: horarios[index], timeIndex: index));
 
 final List<String> horarios = [
   '9:00',
@@ -45,12 +50,15 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
   hashCode: getHashCode,
 )..addAll(_kEventSource);
 
+
 final _kEventSource = {
-  for (var item in List.generate(7, (index) => index))
+  for (var item in List.generate(120, (index) => index))
     DateTime.utc(kFirstDay.year, kFirstDay.month, item): List.generate(
-        horarios.length - Random().nextInt(10),
+        horarios.length,
         (index) => Event(title: horarios[index], timeIndex: index))
 };
+
+
 
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;

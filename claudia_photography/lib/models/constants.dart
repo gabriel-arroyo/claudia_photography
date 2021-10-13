@@ -4,7 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 const Color primaryColor = Color(0xFFBD1522);
 const Color secondaryColor = Color(0xFFC5313D);
-const Color secondaryAplphaColor = Color(0x88C5313D);
+const Color secondaryAplphaColor = Color(0xD7C5313D);
 const Color tertiaryColor = Color(0xFFFF7300);
 const Color backgroundColor = Color(0xFFFFFFFF);
 const Color textTitleColor = Color(0xFFFFFFFF);
@@ -154,3 +154,8 @@ HeaderStyle kCalendarHeaderStyle = const HeaderStyle(
   titleCentered: true,
   formatButtonVisible: false,
 );
+
+String stripePublishableKey =
+    'pk_test_51JjSZUEttr2xOglrFMdLzXdG0wl6Cg1wNxWGuogd6eOEHAEJlpJm3TrtSsT0CUnX6Mzcbt3wVqaCB8zBuq07IuzD00cIoxdDzW';
+String stripeSecretKey =
+    'sk_test_51JjSZUEttr2xOglrw3IhBI8ccvfWNR6TxIp87mjIi5yfEtxbPeCjMj02RXJlo2OSv1iLnvsLjdtLydhXvsEhjPen00tci6TsfI';
