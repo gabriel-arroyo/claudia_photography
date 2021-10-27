@@ -1,3 +1,4 @@
+import 'package:claudia_photography/models/constants.dart';
 import 'package:claudia_photography/widgets/calendar.dart';
 import 'package:claudia_photography/widgets/client_form.dart';
 import 'package:claudia_photography/widgets/paquete.dart';
@@ -6,7 +7,6 @@ import 'package:claudia_photography/widgets/time_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../models/textos.dart';
 import '../widgets/call_to_action.dart';
 import '../widgets/paquete.dart';
 import '../widgets/profile_photo.dart';
@@ -171,11 +171,14 @@ class MyLayout extends StatelessWidget {
           const ProfilePhoto(),
           const PaqueteTexto(),
           const CallToAction(),
+
           const CalendarWidget(),
+
           Padding(
             padding: EdgeInsets.symmetric(horizontal: sizes[mySize][5][2]),
             child: const TimeSelector(),
           ),
+
           const ClientForm(),
           // ConfigureDatabase(),
         ],
@@ -217,7 +220,7 @@ class _ToldoState extends State<Toldo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 115.0),
+      padding: const EdgeInsets.only(left: 110.0),
       color: Colors.white,
       child: FittedBox(
         child: Image.asset('images/toldox2.png'),
@@ -227,23 +230,62 @@ class _ToldoState extends State<Toldo> {
   }
 }
 
-class ExplanationText extends StatelessWidget {
-  const ExplanationText({
-    Key? key,
-  }) : super(key: key);
+var explicacion1 = RichText(
+  text: const TextSpan(
+    // Note: Styles for TextSpans must be explicitly defined.
+    // Child text spans will inherit styles from parent
+    style: TextStyle(
+      fontSize: 14.0,
+      color: Colors.black,
+    ),
+    children: <TextSpan>[
+      TextSpan(
+          text: '1. ',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25.0,
+              color: primaryColor)),
+      TextSpan(text: 'Selecciona un fecha', style: TextStyle(fontSize: 20.0)),
+    ],
+  ),
+);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(35.0),
-      alignment: Alignment.center,
-      child: Text(
-        detalles,
-        style: const TextStyle(fontSize: 20.0),
-        maxLines: 80,
-        //minFontSize: 10.0,
-        overflow: TextOverflow.clip,
-      ),
-    );
-  }
-}
+var explicacion2 = RichText(
+  text: const TextSpan(
+    // Note: Styles for TextSpans must be explicitly defined.
+    // Child text spans will inherit styles from parent
+    style: TextStyle(
+      fontSize: 14.0,
+      color: Colors.black,
+    ),
+    children: <TextSpan>[
+      TextSpan(
+          text: '2. ',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25.0,
+              color: primaryColor)),
+      TextSpan(text: 'Selecciona un horario', style: TextStyle(fontSize: 20.0)),
+    ],
+  ),
+);
+
+var explicacion3 = RichText(
+  text: const TextSpan(
+    // Note: Styles for TextSpans must be explicitly defined.
+    // Child text spans will inherit styles from parent
+    style: TextStyle(
+      fontSize: 14.0,
+      color: Colors.black,
+    ),
+    children: <TextSpan>[
+      TextSpan(
+          text: '3. ',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25.0,
+              color: primaryColor)),
+      TextSpan(text: 'Haz tu reservación', style: TextStyle(fontSize: 20.0)),
+    ],
+  ),
+);

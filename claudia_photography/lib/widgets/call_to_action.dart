@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../models/constants.dart';
 
 class CallToAction extends StatelessWidget {
@@ -20,6 +21,9 @@ class CallToAction extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+        ),
+        SizedBox(
+          height: 15.0,
         ),
       ],
     );

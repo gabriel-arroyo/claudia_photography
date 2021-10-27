@@ -42,7 +42,7 @@ class _ClientFormState extends State<ClientForm> {
   }
 
   _launchURLBrowser() async {
-    const url = 'https://buy.stripe.com/dR68Ad3jz5ntceYdQQ';
+    const url = 'https://buy.stripe.com/3cs5o11br5nt1Ak28a';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -144,6 +144,13 @@ class _ClientFormState extends State<ClientForm> {
               const SizedBox(
                 height: 15.0,
               ),
+              const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  'Reserva tu sesión con el 50%',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
               ElevatedButton(
                 onPressed: () async {
                   if (selectedTime == '') {
@@ -171,8 +178,12 @@ class _ClientFormState extends State<ClientForm> {
                   }
                 },
                 child: Container(
+                    padding: const EdgeInsets.all(10.0),
                     margin: const EdgeInsets.all(8.0),
-                    child: const Text('Pagar reservación')),
+                    child: const Text(
+                      'Pagar reservación',
+                      style: TextStyle(fontSize: 18.0),
+                    )),
               ),
             ]), // we will work in here
           ],
